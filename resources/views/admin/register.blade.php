@@ -1,7 +1,7 @@
 @extends('welcome')
 
 @section('content')
-    <h2 class="mb-5">Cadastrar Novo Usuário</h2>
+    <h2 class="mb-5">Cadastrar novo usuário</h2>
 
     @if(session('success')) 
         <p class="alert alert-success">
@@ -62,6 +62,8 @@
 
         <button class="btn btn-outline-primary w-100 mt-4" type="submit">Cadastrar</button>
     </form>
+
+    <a href="{{ route('admin.users.all') }}">Visualizar todos os usuários</a>
 @endsection
 
 @push('scripts')
@@ -71,7 +73,7 @@
 
             setTimeout(() => {
                 alert.style.display = 'none'
-            }, 3000);
+            }, 3000)
         })
     </script>
 @endpush

@@ -1,0 +1,442 @@
+
+.is_mobile{ display: none; }
+.is_desktop{ display: block; }
+
+
+@media only screen and (max-width: 1024px){
+	
+
+
+}
+
+@media only screen and (max-width: 991px){
+	.is_mobile{ display: block !important; }
+	.is_desktop{ display: none !important; }
+
+
+	body{ font-size: 1.00rem !important; font-weight: normal !important; line-height: 1.35 !important; }
+
+
+	header { height: 330px !important; }
+
+
+	h2 { font-size: 1.65rem !important; line-height: 1.1 !important; }
+	h3 { font-size: 1.20rem !important; line-height: 1.1 !important; }
+	h4 { font-size: 1.30rem !important; line-height: 1.1 !important;}
+	p{ font-size: 1.00rem !important; font-weight: normal !important; line-height: 1.35 !important; }
+
+
+	.heightAutoSM{ height: auto !important; }
+	.height25vhSM{ height: 25vh !important; }
+	.height30vhSM{ height: 30vh !important; }
+	.height40vhSM{ height: 40vh !important; }
+	.height50vhSM{ height: 50vh !important; }
+	.height60vhSM{ height: 60vh !important; }
+	.height70vhSM{ height: 70vh !important; }
+	.height80vhSM{ height: 80vh !important; }
+	.height90vhSM{ height: 90vh !important; }
+	.height100vhSM{ height: 100vh !important; }
+
+
+	.widthAutoSM{ width: auto !important; }
+	.width100pSM{ width: 100% !important; }
+	.width80pSM{ width: 80% !important; }
+	.width60pSM{ width: 60% !important; }
+	.width50pSM{ width: 50% !important; }
+	.width10pSM{ width: 10% !important; }
+	.width5pSM{ width: 5% !important; }
+
+
+
+	.btn {
+		padding: 1.25rem 1.25rem !important;
+		font-size: 1.15rem !important;
+		line-height: 1.2 !important;
+		border-radius: 40px !important;
+		font-weight: 500 !important;
+	}
+	.overlayConcluir{ height: 100% !important; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+	.texto-dobra1{
+		margin-top: -15vh;
+		z-index: 9999;
+		position: relative;	
+		padding-bottom: 50px !important;
+	}
+	.texto-dobra2{ margin-top: -10vh; padding-bottom: 15px; }
+
+
+
+	.card.card-presenca {
+		height: auto !important;
+		margin: 0 !important;
+		margin-bottom: 2px !important;
+	}
+
+	.containerFoguete{ padding: 20px 0 60px 0 !important; }
+	.astronautaFoguete{ margin-top: 0px !important; }
+	.astronautaEstrela{ margin-bottom: 0 !important; padding-top: 0 !important; }
+
+
+	.textoRelogio{ position: relative; padding-top: 40px; z-index: 40; }
+
+
+
+
+	.card-valores .card-body {
+		padding: 3rem 1.5rem !important;
+	}
+	.card-valores .card-body h3{ font-size: 2rem !important; }
+	.text-desc2 {
+		font-size: 1.35rem !important;
+	}
+	.text-desc {
+		font-size: 1.65rem !important;
+		line-height: 1 !important;
+		margin: 0 !important;
+	}
+	.box-de-por p {
+		font-size: 1rem !important;
+	}
+	.vlr-parcela {
+		font-size: 3rem !important;
+	}
+	.card-valores .card-body .btn-mr-default {
+		padding: 15px 15px !important;
+	}
+	.box-de-por{
+		padding: 16px 15px !important;
+	}
+
+
+
+	
+	.tarjaTextTop{
+		position: absolute !important;
+		top: 0px !important;
+		bottom: initial !important;
+	}
+	.tarjaTextBottom{
+		position: absolute !important;
+		bottom: 0px !important;
+		top: initial !important;
+	}
+	
+	.section-default { height: auto !important; }
+	.section-default.pt-0 { padding-top: 0 !important; }
+	.spaceText{ padding: 48px 24px 48px 24px !important; }
+
+
+	header .navbar-nav{
+		margin: 0px auto;
+		border: 1px solid #ffb1b1;
+		border-radius: 4px;
+		background-color: #ffffff;
+	}
+	header .navbar-nav .nav-item {
+		position: relative;
+		margin: 8px 8px;
+	}
+	header .navbar-nav .nav-item .nav-link {
+		line-height: 1;
+	}
+
+
+	.card.card-servicos-inst .card-body {
+		padding-left: 0 !important;
+	}
+
+	.card.card-depoimentos {
+		margin-bottom: 2rem !important;
+	}
+	.card.card-contato-inst .card-body {
+		background-color: transparent;
+		font-size: 1.0rem !important;
+		line-height: 1.35 !important;
+		font-weight: normal !important;
+	}
+
+	.card.card-expertise { border-radius: 1.0rem !important; }
+	.card.card-expertise .overlay { border-radius: 1.0rem !important; }
+
+	.card.card-escolher .card-header {
+		padding: 30px 20px !important;
+	}	
+	.card.card-escolher .card-body {
+		padding: 30px 20px !important;
+	}	
+
+	.card.card-escolher-item{ position: relative; border: 0; background-color: transparent; height: 100%; margin-bottom: 20px; }
+	.card.card-escolher-item.separar{ position: relative;   }
+	.card.card-escolher-item.separar:before{ 
+		content:''; 
+		position: absolute; 
+		top: initial !important;
+		right: initial !important;
+		bottom: 20px; 
+		left: 5%;
+		height: 1px !important; width: 90% !important; border: 1px solid #e2e2e2;
+	}
+	.card.card-escolher-item .card-header {
+		height: auto !important;
+		padding: 10px 20px 0 20px !important;
+	}
+
+	.card.card-contato {
+		height: auto !important;
+		padding: 1.5rem 1rem 1.5rem 1rem;
+		margin-bottom: 1rem !important;
+	}
+	.card.card-contato .card-body {
+		padding: .5rem 0rem !important;
+		font-size: 1.0rem !important;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	.colLoc {
+		text-align: center;
+		margin: 0 auto;
+	}
+	.colLoc img{ 
+		margin: 0 auto;
+		max-height: 100px !important; 
+	}
+
+
+
+	.colDif{ width: 33.3334% !important; }
+	.colDif img{ max-height: 80px !important; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	.o_title { font-size: 1.50rem !important; margin: 0px 0 20px !important; }
+	.o_title_h2 { font-size: 1.75rem !important; }
+	.o_title_h3 { font-size: 1.50rem !important; }
+
+	
+
+	#app{ padding-bottom: 0px !important; }
+
+
+	.text-option{ font-size: 2rem !important; }
+	.text-option-span{ font-size: 1rem !important; font-weight: 500 !important; }
+	.icon-option img{ width: 60px !important; }
+
+	.bg-banner{
+		position: relative !important;
+		height: 330px !important;
+		padding-bottom: 0px !important;
+	}
+	.box-image-banner{
+		width: 100% !important; 
+		height: 330px !important;
+		top: 0 !important;
+	}
+	.bg-image-banner {
+		background-size: cover !important;
+		width: 100% !important;
+		height: 330px !important;
+		background-position: 25% bottom !important;
+	}
+	.banner-texto-header{
+		width: 90% !important; 
+		padding-right: 15px !important; 
+	}
+
+	.cards-destaques {
+		margin-top: -50px !important;
+		z-index: 10;
+		margin-bottom: 20px !important;
+	}
+
+	.imgPhotoSobreNos{
+		border-bottom: 1px solid #272547 !important;
+		margin-bottom: 45px !important;
+	}
+	.imgPhotoCurriculo{
+		/*margin-bottom: 45px !important;*/
+	}
+	/*.imgLogotipoCurriculo{ margin-bottom: 30px !important; }*/
+
+	.cards-destaques-row {
+		padding: 16px !important;
+	}
+
+	.cards-destaques-item {
+		width: 100% !important;
+		margin-bottom: 15px !important;
+		height: auto !important;
+		padding: 20px !important;
+	}
+	.cards-destaques-item img {
+		width: 65px !important;
+	}
+
+	.card-formulario {
+		margin-top: 10px !important;	
+	}
+
+	.section-curriculo{ border-bottom: 0px solid #e8861d !important; }
+
+
+	.escolha_itens {
+		width: 100% !important;
+		margin-top: 40px;
+	}
+
+	.escolha_itens.mg0 {
+		width: 100% !important;
+		margin-top: -8px !important;
+		margin-bottom: 30px !important;
+	}
+
+
+	footer { margin-bottom: 50px !important; }
+
+
+	.fixedBarWhatsApp{
+		z-index: 99 !important;
+		position: fixed !important;
+		bottom: 0 !important;
+		left: 0 !important;
+		width: 100% !important;
+		height: 45px !important;
+		background-color: #25d366;
+		display: flex;
+		justify-content: start;
+		align-items: center;
+		padding-left: 1.5rem;
+	}
+	.fixedBarWhatsApp .WhatsAppTextFooter{ 
+		color: #FFFFFF;
+		font-size: 1.75rem;
+		font-weight: 700;
+		/*padding-left: 0px;*/
+	}
+	.fixedBarWhatsApp .iconWhatsApp{
+		/*position: relative !important;*/
+		width: 60px !important;
+		height: 60px !important;
+		bottom: 10px !important;
+		right: 20px !important;	
+		/*box-shadow: none !important;*/
+		/*background-color: rgb(255,255,255,0) !important;*/
+	}
+
+
+
+
+
+
+	/*.box-circle {*/
+	/*	width: 250px !important;*/
+	/*	height: 250px !important;*/
+	/*}*/
+
+	.section-slider{
+		margin: 0 !important;
+	}
+
+	.section-servicos {
+		margin-top: 0rem !important;
+	}
+	.box-servicos-item {
+		padding: 1rem 1.5rem !important;
+		transform: initial !important;
+		margin-top: 50px !important;
+	}
+	.card-box-item{
+		height: calc(100% - 0.5rem) !important;
+		padding-bottom: 25px !important;
+	}
+	.card-box-item-tm{
+		height: calc(100% - 0.5rem) !important;
+		padding-bottom: 30px !important;
+	}
+	.service-box-item {
+		height: auto !important;
+		margin-bottom: 10px !important;
+	}
+	.box-interno-center{
+		position: relative !important;
+		padding: 8px 0 !important;
+		margin: 25px 0 !important;
+	}
+	.box-ligacao .box-interno {
+		/*position: abso !important;*/
+		top: -8px !important;
+		left: -8px !important;
+		height: calc(100% + 16px);
+		width: calc(100% + 16px);
+	}
+	.box-ligacao .text {
+		text-align: center !important;
+		font-size: 1.2rem !important;
+	}
+
+	.btn-ligacao{
+		display: block !important;	
+		padding: 1rem 3rem !important;
+		font-size: 0.9rem !important;
+		width: 90% !important;
+		margin: 0 auto !important;
+	}
+
+	.services__icon {
+		height: 4rem !important;
+	}
+	.service-box-item h2 {
+		font-size: 1.0rem !important;
+	}
+
+
+
+	/*.services__content p {*/
+	/*	font-size: .9rem !important;*/
+	/*}*/
+
+	/*footer .header-box-item{*/
+	/*	padding-left: 10% !important;*/
+	/*	margin: 10px 0 !important;*/
+	/*}*/
+
+}

@@ -29,4 +29,45 @@ class AuthController extends Controller
         
         return redirect()->route('admin.users.create')->with('success', 'Usuário criado com sucesso!');
     }
+
+    public function getAll() {
+        $data = User::all();
+
+        return view('admin.all', ['users' => $data]);
+    }
+
+    public function update(Request $request) {
+        $data = $request->input('users');
+
+        foreach ($data as $userData) {
+            if (!isset($userData['id'])) {
+                continue;
+            }
+
+            $user = User::find($userData['id']);
+            if (!$user) {
+                continue;
+            }
+
+            if (isset($userData['delete']) && $userData['delete']) {
+                $user->delete();
+                continue;
+            }
+
+            $user->name = $userData['name'] ?? $user->name;
+            $user->email = $userData['email'] ?? $user->email;
+
+            if (!empty($userData['password'])) {
+                $user->password = bcrypt($userData['password']);
+            }
+
+            $user->phone = $userData['phone'] ?? $user->phone;
+            $user->cpf = $userData['cpf'] ?? $user->cpf;
+            $user->role = $userData['role'] ?? $user->role;
+            
+            $user->save();
+        }
+
+        return redirect()->back()->with('success', 'Alterações feitas com sucesso!');
+    }
 }
