@@ -1,0 +1,79 @@
+$laranja: #ed6412;
+$font: Montserrat, sans-serif;
+
+
+body {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f3f3;
+
+    #block {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        width: 90%;
+        max-width: 1000px;
+        min-height: 60dvh;
+        border-radius: .375rem;
+        overflow: hidden;
+        display: flex;
+
+        > div {
+            flex-basis: 0;
+            flex-grow: 1;
+            position: relative;
+            background-image: url('/img/bg-login.jpg');
+            background-size: cover;
+            background-position: top right;
+
+            &::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to right, #ed6212c2, #ed621221);
+            }
+        }   
+
+        form {
+            padding: 4rem 2rem;
+            flex-basis: 0;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #FFF;
+
+            input {
+                &:focus {
+                    border-color: $laranja;
+                    box-shadow: none;
+                }
+            }
+
+            button {
+                border-color: $laranja;
+                color: $laranja;
+                background-color: $laranja;
+                color: #FFF;
+
+                &:hover {
+                    background-color: transparent;
+                    color: $laranja;
+                }
+            }
+        }
+
+        @media (max-width: 800px) {
+            flex-direction: column;
+
+            > div {
+                min-height: 20dvh;
+            }
+
+            form {
+                padding: 2rem;
+            }
+        }
+    }
+}

@@ -16,28 +16,37 @@
     <div id="flex">
         <aside>
             <div class="container py-2">
-                <a href="{{ route('home.index') }}">
+                <a href="{{ route('dashboard.index') }}">
                     <img class="img-fluid" src="{{ asset('img/logotipo.png') }}" alt="Logo triunfo">
                 </a>
     
                 <ul>
                     <li>
-                        <a href="{{ route('home.index') }}">Home</a>
+                        <a href="{{ route('dashboard.index') }}">Home</a>
                     </li>
                     <li>
-                        <a href="">Provas</a>
+                        <a href="{{ route('prova.index') }}">Provas</a>
                     </li>
                     <li>
                         <a href="{{ route('admin.users.create') }}">Gestão de usuários</a>
                     </li>
                     <li>
-                        <a href="">Sair</a>
+                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a>
                     </li>
+
+                    <form method="POST" action="{{ route('login.logout') }}" id="logout-form">
+                        @csrf
+                    </form>
                 </ul>
             </div>
         </aside>
     
         <main>
+            <div style="width: 100%; background-color: #ed6412; color: #FFF; padding: .5rem">
+                <marquee behavior="scroll" direction="left">
+                    <h6 class="mb-0" style="font-weight: 300">Usuário logado: {{ auth()->user()->name }}</h6>
+                </marquee>
+            </div>
             <div class="container py-2 py-lg-5">
                 @yield('content')            
             </div>

@@ -23,4 +23,8 @@ class HomeController extends Controller
     public function dashboard() {
         return view('dashboard.index');
     }
+
+    public function prova() {
+        return view('prova.index');
+    }
 }
