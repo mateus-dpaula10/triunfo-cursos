@@ -19,12 +19,4 @@ class HomeController extends Controller
         
         return redirect()->away($url);
     }
-
-    public function dashboard() {
-        return view('dashboard.index');
-    }
-
-    public function prova() {
-        return view('prova.index');
-    }
 }

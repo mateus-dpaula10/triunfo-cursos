@@ -34,8 +34,8 @@
             <h3>Login</h3>
             
             <div class="form-group mt-5">
-                <label for="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" name="email" id="email" required>
+                <label for="cpf" class="form-label">Cpf</label>
+                <input type="text" class="form-control" name="cpf" id="cpf" required>
             </div>
             
             <div class="form-group mt-3">

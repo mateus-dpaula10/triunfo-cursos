@@ -16,16 +16,16 @@
     <div id="flex">
         <aside>
             <div class="container py-2">
-                <a href="{{ route('dashboard.index') }}">
+                <a href="{{ route('cursos.index') }}">
                     <img class="img-fluid" src="{{ asset('img/logotipo.png') }}" alt="Logo triunfo">
                 </a>
     
                 <ul>
                     <li>
-                        <a href="{{ route('dashboard.index') }}">Home</a>
+                        <a href="{{ route('cursos.create') }}">Cursos</a>
                     </li>
                     <li>
-                        <a href="{{ route('prova.index') }}">Provas</a>
+                        <a href="{{ route('exams.create') }}">Provas</a>
                     </li>
                     <li>
                         <a href="{{ route('admin.users.create') }}">Gestão de usuários</a>
@@ -44,7 +44,7 @@
         <main>
             <div style="width: 100%; background-color: #ed6412; color: #FFF; padding: .5rem">
                 <marquee behavior="scroll" direction="left">
-                    <h6 class="mb-0" style="font-weight: 300">Usuário logado: {{ auth()->user()->name }}</h6>
+                    <h6 class="mb-0" style="font-weight: 300">Usuário logado: {{ auth()->check() ? auth()->user()->name : '' }}</h6>
                 </marquee>
             </div>
             <div class="container py-2 py-lg-5">

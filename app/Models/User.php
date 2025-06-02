@@ -19,12 +19,13 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
         'password',
         'cpf',
         'birth_date',
         'phone',
-        'role'
+        'role',
+        'description',
+        'course_id'
     ];
 
     /**
@@ -46,4 +47,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function course() {
+        return $this->belongsTo(Course::class);
+    }
 }

@@ -19,11 +19,11 @@
                     <tr>
                         <th>#</th>
                         <th>Nome</th>
-                        <th>E-mail</th>
                         <th>Senha</th>
                         <th>Telefone</th>
                         <th>Cpf</th>
                         <th>Função</th>
+                        <th>Descrição</th>
                         <th>Excluir?</th>
                     </tr>
                 </thead>
@@ -33,9 +33,6 @@
                             <td>{{ $index + 1 }}</td>
                             <td>
                                 <input type="text" name="users[{{ $user->id }}][name]" value="{{ $user->name }}" class="form-control">
-                            </td>
-                            <td>
-                                <input type="email" name="users[{{ $user->id }}][email]" value="{{ $user->email }}" class="form-control">
                             </td>
                             <td>
                                 <input type="password" name="users[{{ $user->id }}][password]" value="{{ $user->password }}" class="form-control">
@@ -51,6 +48,9 @@
                                     <option value="user" {{ $user->role === 'user' ? 'selected' : '' }}>Usuário</option>
                                     <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>Administrador</option>
                                 </select>
+                            </td>
+                            <td>
+                                <input type="text" name="users[{{ $user->id }}][description]" value="{{ $user->description }}" class="form-control">
                             </td>
                             <td class="text-center">
                                 <input type="checkbox" name="users[{{ $user->id }}][delete]" value="1">

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 Use App\Models\User;
+Use App\Models\Course;
 
 class AuthController extends Controller
 {
@@ -16,7 +17,7 @@ class AuthController extends Controller
 
     public function login(Request $request) {
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
+            'cpf' => ['required', 'regex:/^\d{11}$/'],
             'password' => ['required']
         ]);
 
@@ -24,14 +25,14 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if (auth()->user()->role === 'admin') {
-                return redirect()->intended('/dashboard');
+                return redirect()->intended('/cursos');
             } else {
-                return redirect()->intended('/prova');
+                return redirect()->intended('/cursos');
             }
         }
 
         throw ValidationException::withMessages([
-            'email' => ['As credenciais estão incorretas.']
+            'password' => ['As credenciais estão incorretas.']
         ]);
     }
 
@@ -44,7 +45,9 @@ class AuthController extends Controller
     }
 
     public function create() {
-        return view('admin.register');
+        $data = Course::all();
+
+        return view('admin.register', ['courses' => $data]);
     }
 
     public function store(Request $request) {
@@ -53,9 +56,10 @@ class AuthController extends Controller
             'cpf'         => 'required|string|max:14|unique:users',
             'birth_date'  => 'required|date',
             'phone'       => 'nullable|string|max:20',
-            'email'       => 'required|email|unique:users',
             'password'    => 'required|string|min:6',
-            'role'        => 'required|string'
+            'role'        => 'required|string',
+            'description' => 'nullable|string',
+            'course_id'   => 'nullable|exists:courses,id'
         ]);
 
         $data['password'] = Hash::make($data['password']);
