@@ -15,7 +15,11 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        if (!auth()->check() || !in_array(auth()->user()->role, $roles)) {
+        if (!auth()->check()) {
+            return redirect('/login');
+        }
+
+        if (!in_array(auth()->user()->role, $roles)) {
             abort(403, 'Acesso não autorizado.');
         }
 

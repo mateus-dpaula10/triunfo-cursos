@@ -8,7 +8,14 @@ use App\Models\Course;
 class CourseController extends Controller
 {
     public function index() {
-        $data = Course::all();
+        $user = auth()->user();
+
+        $data = Course::with([
+            'exam',
+            'exam.attempts' => function ($query) use ($user) {
+                $query->where('user_id', $user->id)->latest();
+            }
+        ])->get();
 
         return view('cursos.index', ['courses' => $data]);
     }
@@ -47,13 +54,23 @@ class CourseController extends Controller
             }
 
             if (isset($courseData['delete']) && $courseData['delete']) {
+                if ($course->exam) {
+                    $course->exam->attempts()->delete();
+
+                    foreach ($course->exam->questions as $question) {
+                        $question->options()->delete();
+                        $question->delete();
+                    }
+
+                    $course->exam->delete();
+                }
+
                 $course->delete();
                 continue;
             }
 
             $course->title = $courseData['title'] ?? $course->title;
-            $course->description = $courseData['description'] ?? $course->description;
-            
+            $course->description = $courseData['description'] ?? $course->description;            
             $course->save();
         }
 

@@ -3,6 +3,12 @@
 @section('content')
     <h2 class="mb-5">Realizar prova '{{ $exam->title }}'</h2>
 
+    @if(session('error')) 
+        <p class="alert alert-danger">
+            {{ session('error') }}
+        </p>
+    @endif
+
     <p>Tentativas feitas: {{ \App\Models\ExamAttempt::where('user_id', auth()->id())->where('exam_id', $exam->id)->count() }} de 3</p>
 
     <form method="POST" action="{{ route('exams.submit', $exam->id) }}">

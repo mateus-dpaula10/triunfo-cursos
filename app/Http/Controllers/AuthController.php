@@ -23,12 +23,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
-            if (auth()->user()->role === 'admin') {
-                return redirect()->intended('/cursos');
-            } else {
-                return redirect()->intended('/cursos');
-            }
+            return redirect()->intended('/cursos');
         }
 
         throw ValidationException::withMessages([
@@ -70,9 +65,10 @@ class AuthController extends Controller
     }
 
     public function getAll() {
-        $data = User::all();
+        $users = User::with('course')->get();
+        $courses = Course::all();
 
-        return view('admin.all', ['users' => $data]);
+        return view('admin.all', compact('users', 'courses'));
     }
 
     public function update(Request $request) {
@@ -93,8 +89,7 @@ class AuthController extends Controller
                 continue;
             }
 
-            $user->name = $userData['name'] ?? $user->name;
-            $user->email = $userData['email'] ?? $user->email;
+            $user->name = $userData['name'] ?? $user->name;            
 
             if (!empty($userData['password'])) {
                 $user->password = bcrypt($userData['password']);
@@ -103,6 +98,8 @@ class AuthController extends Controller
             $user->phone = $userData['phone'] ?? $user->phone;
             $user->cpf = $userData['cpf'] ?? $user->cpf;
             $user->role = $userData['role'] ?? $user->role;
+            $user->description = $userData['description'] ?? $user->description;
+            $user->course_id = $userData['course_id'] ?? $user->course_id;
             
             $user->save();
         }

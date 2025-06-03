@@ -26,6 +26,37 @@ class QuestionController extends Controller
         }
 
         return redirect()->back()->with('success', 'Questão atualizada!');
+    }   
+
+    public function store(Request $request) {
+        $request->validate([
+            'exam_id' => 'required|exists:exams,id',
+            'text' => 'required|string',
+            'options' => 'required|array|min:2',
+            'correct_option' => 'required|numeric',
+        ]);
+
+        $question = Question::create([
+            'exam_id' => $request->exam_id,
+            'text' => $request->text,
+        ]);
+
+        foreach ($request->options as $index => $optionData) {
+            Option::create([
+                'question_id' => $question->id,
+                'text' => $optionData['text'],
+                'is_correct' => $index == $request->correct_option,
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Pergunta adicionada!');
     }
 
+    public function destroy($id) {
+        $question = Question::findOrFail($id);
+        $question->options()->delete();
+        $question->delete();
+
+        return redirect()->route('exams.index')->with('success', 'Pergunta excluída!');
+    }
 }

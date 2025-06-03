@@ -24,6 +24,7 @@
                         <th>Cpf</th>
                         <th>Função</th>
                         <th>Descrição</th>
+                        <th>Curso</th>
                         <th>Excluir?</th>
                     </tr>
                 </thead>
@@ -38,10 +39,10 @@
                                 <input type="password" name="users[{{ $user->id }}][password]" value="{{ $user->password }}" class="form-control">
                             </td>
                             <td>
-                                <input type="text" name="users[{{ $user->id }}][phone]" value="{{ $user->phone }}" class="form-control">
+                                <input type="text" name="users[{{ $user->id }}][phone]" value="{{ $user->phone }}" class="form-control phone-mask">
                             </td>
                             <td>
-                                <input type="text" name="users[{{ $user->id }}][cpf]" value="{{ $user->cpf }}" class="form-control">
+                                <input type="text" name="users[{{ $user->id }}][cpf]" value="{{ $user->cpf }}" class="form-control cpf-mask">
                             </td>
                             <td>
                                 <select name="users[{{ $user->id }}][role]" class="form-select">
@@ -51,6 +52,15 @@
                             </td>
                             <td>
                                 <input type="text" name="users[{{ $user->id }}][description]" value="{{ $user->description }}" class="form-control">
+                            </td>
+                            <td>
+                                <select name="users[{{ $user->id }}][course_id]" class="form-select">
+                                    @foreach ($courses as $course)
+                                        <option value="{{ $course->id }}" {{ $user->course_id == $course->id ? 'selected' : '' }}>
+                                            {{ $course->title }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </td>
                             <td class="text-center">
                                 <input type="checkbox" name="users[{{ $user->id }}][delete]" value="1">
@@ -69,13 +79,18 @@
 @endsection
 
 @push('scripts')
-    <script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script>        
         document.addEventListener('DOMContentLoaded', () => {
             const alert = document.querySelector('.alert')
 
             setTimeout(() => {
                 alert.style.display = 'none'
-            }, 3000)
+            }, 3000)  
+
+            $('.phone-mask').mask('(00) 00000-0000')
+            $('.cpf-mask').mask('000.000.000-00')
         })
     </script>
 @endpush

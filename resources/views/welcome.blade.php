@@ -22,14 +22,16 @@
     
                 <ul>
                     <li>
-                        <a href="{{ route('cursos.create') }}">Cursos</a>
+                        <a href="{{ route('cursos.index') }}">Cursos</a>
                     </li>
-                    <li>
-                        <a href="{{ route('exams.create') }}">Provas</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('admin.users.create') }}">Gestão de usuários</a>
-                    </li>
+                    {{-- @if (auth()->user()->role === 'admin')
+                        <li>
+                            <a href="{{ route('exams.create') }}">Provas</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.users.create') }}">Gestão de usuários</a>
+                        </li>
+                    @endif --}}
                     <li>
                         <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a>
                     </li>
@@ -53,10 +55,10 @@
         </main>
     </div>
 
-    @stack('scripts')
-
     <script 
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    
+    @stack('scripts')
 </body>
 </html>

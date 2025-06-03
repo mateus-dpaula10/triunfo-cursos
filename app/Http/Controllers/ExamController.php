@@ -10,9 +10,16 @@ Use App\Models\ExamAttempt;
 class ExamController extends Controller
 {
     public function index() {
-        $data = Exam::with('course', 'questions.options')->get();
+        $user = auth()->user();
 
-        return view ('exams.index', ['exams' => $data]);
+        $courses = Course::with([
+            'exam',
+            'exam.attempts' => function ($query) use ($user) {
+                $query->where('user_id', $user->id)->latest()->limit(1);
+            }
+        ])->get();
+
+        return view ('exams.index', ['courses' => $courses]);
     }
 
     public function create() {
@@ -67,6 +74,16 @@ class ExamController extends Controller
         return view('exams.show', compact('exam'));
     }
 
+    public function destroy($id) {
+        $exam = Exam::findOrFail($id);
+
+        $exam->attempts()->delete();
+
+        $exam->delete();
+
+        return redirect()->route('exams.index')->with('success', 'Prova e tentativas excluídas com sucesso.');
+    }
+
     public function submit(Request $request, Exam $exam) {
         $user = auth()->user();
 
@@ -91,7 +108,7 @@ class ExamController extends Controller
             }
         }
 
-        $score = round(($correctAnswers / $totalQuestions) * 100, 2);
+        $score = round(($correctAnswers / $totalQuestions) * 10, 2);
 
         ExamAttempt::create([
             'user_id' => $user->id,
@@ -107,14 +124,20 @@ class ExamController extends Controller
     }
 
     public function result(Exam $exam) {
-        $score = session('score');
-        $total = session('total');
-        $correct = session('correct');
+        $user = auth()->user();
 
-        if (!$score) {
-            return redirect()->route('exams.show', $exam->id)->with('error', 'Você ainda não fez esta prova.');
+        $attempt = ExamAttempt::where('user_id', $user->id)
+                    ->where('exam_id', $exam->id)
+                    ->latest()
+                    ->first();
+
+        if (!$attempt) {
+            return redirect()->route('exams.index')->with('error', 'Tentativa não encontrada.');
         }
 
-        return view('exams.result', compact('exam', 'score', 'total', 'correct'));
+        return view('exams.result', [
+          'exam'    => $exam,
+          'attempt' => $attempt
+        ]);
     }
 }

@@ -3,10 +3,8 @@
 @section('content')
     <h2 class="mb-5">Resultado da prova '{{ $exam->title }}'</h2>
 
-    <p>Total de questões: {{ $total }}</p>
-    <p>Acertos: {{ $correct }}</p>
-    <p>Pontuação: {{ $score }}%</p>
+    <p><strong>Nota:</strong> {{ number_format($attempt->score ?? 0, 2, ',', '.') }}</p>
+    <p><strong>Data:</strong> {{ $attempt->created_at->format('d/m/Y H:i') }}</p>
 
-    <a href="{{ route('exams.show', $exam->id) }}" class="btn btn-primary">Ver Prova</a>
-    <a href="{{ route('exams.index') }}" class="btn btn-secondary">Voltar</a>
+    <a href="{{ route('cursos.index') }}" class="btn btn-secondary">Voltar</a>
 @endsection

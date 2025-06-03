@@ -14,9 +14,7 @@
 </head>
 <body>
     <div id="block">
-        <div>
-
-        </div>
+        <div></div>
 
         <form method="POST" action="{{ route('login.auth') }}">
             @csrf
@@ -34,8 +32,8 @@
             <h3>Login</h3>
             
             <div class="form-group mt-5">
-                <label for="cpf" class="form-label">Cpf</label>
-                <input type="text" class="form-control" name="cpf" id="cpf" required>
+                <label for="cpf" class="form-label">CPF</label>
+                <input type="text" class="form-control cpf-mask" name="cpf" id="cpf" required>
             </div>
             
             <div class="form-group mt-3">
@@ -50,6 +48,8 @@
     <script 
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const alert = document.querySelector('.alert')
@@ -57,6 +57,17 @@
             setTimeout(() => {
                 alert.style.display = 'none'
             }, 3000)
+
+            $('.cpf-mask').mask('000.000.000-00')
+
+            document.querySelectorAll('form').forEach(form => {
+                form.addEventListener('submit', function () {
+                    const cpfInputs = form.querySelectorAll('.cpf-mask') 
+                    cpfInputs.forEach(input => {
+                        input.value = input.value.replace(/\D/g, '')
+                    })
+                })
+            })  
         })
     </script>
 </body>

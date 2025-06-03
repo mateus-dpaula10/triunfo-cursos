@@ -29,7 +29,7 @@
 
         <div class="form-group mt-3">
             <label class="form-label">Cpf:</label>
-            <input class="form-control" type="text" name="cpf" required>
+            <input class="form-control cpf-mask" type="text" name="cpf" required>
         </div>
 
         <div class="form-group mt-3">
@@ -39,7 +39,7 @@
 
         <div class="form-group mt-3">
             <label class="form-label">Telefone:</label>
-            <input class="form-control" type="text" name="phone" required>
+            <input class="form-control phone-mask" type="text" name="phone" required>
         </div>
 
         <div class="form-group mt-3">
@@ -76,6 +76,8 @@
 @endsection
 
 @push('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const alert = document.querySelector('.alert')
@@ -83,6 +85,23 @@
             setTimeout(() => {
                 alert.style.display = 'none'
             }, 3000)
+
+            $('.phone-mask').mask('(00) 00000-0000')
+            $('.cpf-mask').mask('000.000.000-00')
+
+            document.querySelectorAll('form').forEach(form => {
+                form.addEventListener('submit', function () {
+                    const cpfInputs = form.querySelectorAll('.cpf-mask') 
+                    cpfInputs.forEach(input => {
+                        input.value = input.value.replace(/\D/g, '')
+                    })
+
+                    const phoneInputs = form.querySelectorAll('.phone-mask')
+                    phoneInputs.forEach(input => {
+                        input.value = input.value.replace(/\D/g, '')    
+                    })
+                })
+            })             
         })
     </script>
 @endpush
