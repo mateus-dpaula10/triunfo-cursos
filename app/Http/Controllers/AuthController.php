@@ -65,7 +65,11 @@ class AuthController extends Controller
     }
 
     public function getAll() {
-        $users = User::with('course')->get();
+        $users = User::with([
+            'course',
+            'examAttempts.exam'
+        ])->get();
+
         $courses = Course::all();
 
         return view('admin.all', compact('users', 'courses'));
@@ -85,6 +89,7 @@ class AuthController extends Controller
             }
 
             if (isset($userData['delete']) && $userData['delete']) {
+                $user->examAttempts()->delete();
                 $user->delete();
                 continue;
             }

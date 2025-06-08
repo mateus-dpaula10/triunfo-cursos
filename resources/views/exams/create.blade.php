@@ -40,41 +40,43 @@
 @endsection
 
 @push('scripts')
-    <script>        
+    <script>    
+        let questionIndex = 0
+
+        function addQuestion() {
+            const container = document.getElementById('questions-container')
+            
+            const questionHtml = `
+                <div class="border p-3 mb-3">
+                    <div class="mb-2">
+                        <label>Pergunta ${questionIndex + 1}</label>
+                        <input type="text" name="questions[${questionIndex}][text]" class="form-control" required>
+                    </div>
+
+                    <label>Alternativas</label>
+                    ${[0,1,2,3].map(j => `
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="questions[${questionIndex}][correct]" value="${j}" required>
+                            <input type="text" name="questions[${questionIndex}][options][${j}]" class="form-control d-inline w-75" placeholder="Alternativa ${String.fromCharCode(65 + j)}" required>
+                        </div>
+                    `).join('')}
+                </div>
+            `
+
+            container.insertAdjacentHTML('beforeend', questionHtml)
+            questionIndex++
+        }
+    
         document.addEventListener('DOMContentLoaded', () => {
             const alert = document.querySelector('.alert')
 
-            setTimeout(() => {
-                alert.style.display = 'none'
-            }, 3000)            
-
-            let questionIndex = 0
-
-            function addQuestion() {
-                const container = document.getElementById('questions-container')
-                
-                const questionHtml = `
-                    <div class="border p-3 mb-3">
-                        <div class="mb-2">
-                            <label>Pergunta ${questionIndex + 1}</label>
-                            <input type="text" name="questions[${questionIndex}][text]" class="form-control" required>
-                        </div>
-
-                        <label>Alternativas</label>
-                        ${[0,1,2,3].map(j => `
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="questions[${questionIndex}][correct]" value="${j}" required>
-                                <input type="text" name="questions[${questionIndex}][options][${j}]" class="form-control d-inline w-75" placeholder="Alternativa ${String.fromCharCode(65 + j)}" required>
-                            </div>
-                        `).join('')}
-                    </div>
-                `
-
-                container.insertAdjacentHTML('beforeend', questionHtml)
-                questionIndex++
+            if (alert) {
+                setTimeout(() => {
+                    alert.style.display = 'none'
+                }, 3000)           
             }
-        })
 
-        document.addEventListener('DOMContentLoaded', addQuestion)
+            addQuestion()
+        })
     </script>
 @endpush

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 Use App\Models\Course;
 Use App\Models\Exam;
 Use App\Models\ExamAttempt;
+Use App\Models\User;
 
 class ExamController extends Controller
 {
@@ -139,5 +140,11 @@ class ExamController extends Controller
           'exam'    => $exam,
           'attempt' => $attempt
         ]);
+    }
+
+    public function resetAttempts(User $user) {
+        $user->examAttempts()->delete();
+
+        return redirect()->back()->with('success', 'Tentativas resetadas com sucesso para o aluno ' . $user->name);
     }
 }

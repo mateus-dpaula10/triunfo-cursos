@@ -25,6 +25,8 @@
                         <th>Função</th>
                         <th>Descrição</th>
                         <th>Curso</th>
+                        <th>Nota</th>
+                        <th>Tentativas</th>
                         <th>Excluir?</th>
                     </tr>
                 </thead>
@@ -61,6 +63,27 @@
                                         </option>
                                     @endforeach
                                 </select>
+                            </td>
+                            <td>
+                                @php
+                                    $latestAttempt = $user->examAttempts->sortByDesc('created_at')->first();
+                                @endphp
+
+                                @if ($latestAttempt)
+                                    <div><strong>Prova:</strong> {{ $latestAttempt->exam->title ?? '---' }}</div>
+                                    <div><strong>Nota:</strong> {{ $latestAttempt->score }}/10</div>
+                                    <div><strong>Data:</strong> {{ $latestAttempt->created_at->format('d/m/Y H:i') }}</div>
+                                    <div><strong>Tentativas:</strong> {{ $user->examAttempts->where('exam_id', $latestAttempt->exam_id)->count() }}</div>
+                                @else
+                                    <em>Sem tentativas</em>
+                                @endif
+                            </td>
+                            <td>
+                                <form action="{{ route('admin.users.resetAttempts', $user->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja resetar as tentativas deste usuário?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-warning">Resetar Tentativas</button>
+                                </form>
                             </td>
                             <td class="text-center">
                                 <input type="checkbox" name="users[{{ $user->id }}][delete]" value="1">

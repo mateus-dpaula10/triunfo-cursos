@@ -27,6 +27,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/admin/store', [AuthController::class, 'store'])->name('admin.users.store');
     Route::get('/admin/all', [AuthController::class, 'getAll'])->name('admin.users.all');
     Route::patch('/admin/patch', [AuthController::class, 'update'])->name('admin.users.patch');
+    Route::delete('/admin/users/{user}/reset-attempts', [ExamController::class, 'resetAttempts'])->name('admin.users.resetAttempts');
 
     Route::get('/cursos/create', [CourseController::class, 'create'])->name('cursos.create');
     Route::post('/cursos/store', [CourseController::class, 'store'])->name('cursos.store');

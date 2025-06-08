@@ -10,7 +10,7 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="shortcut icon" href="assets-eja/images/favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('assets-eja/images/favicon.ico') }}">
 </head>
 <body>    
     <div id="flex">
@@ -24,14 +24,14 @@
                     <li>
                         <a href="{{ route('cursos.index') }}">Cursos</a>
                     </li>
-                    {{-- @if (auth()->user()->role === 'admin')
+                    @if (auth()->user()->role === 'admin')
                         <li>
                             <a href="{{ route('exams.create') }}">Provas</a>
                         </li>
                         <li>
                             <a href="{{ route('admin.users.create') }}">Gestão de usuários</a>
                         </li>
-                    @endif --}}
+                    @endif
                     <li>
                         <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a>
                     </li>
