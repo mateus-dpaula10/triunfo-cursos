@@ -142,7 +142,9 @@ class ExamController extends Controller
         ]);
     }
 
-    public function resetAttempts(User $user) {
+    public function resetAttempts(string $id) {
+        $user = User::findOrFail($id);
+
         $user->examAttempts()->delete();
 
         return redirect()->back()->with('success', 'Tentativas resetadas com sucesso para o aluno ' . $user->name);

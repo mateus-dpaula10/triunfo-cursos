@@ -79,11 +79,7 @@
                                 @endif
                             </td>
                             <td>
-                                <form action="{{ route('admin.users.resetAttempts', $user->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja resetar as tentativas deste usuário?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-warning">Resetar Tentativas</button>
-                                </form>
+                                <button type="submit" class="btn btn-sm btn-warning" onclick="resetAttempts({{ $user->id }})">Resetar Tentativas</button>
                             </td>
                             <td class="text-center">
                                 <input type="checkbox" name="users[{{ $user->id }}][delete]" value="1">
@@ -115,5 +111,25 @@
             $('.phone-mask').mask('(00) 00000-0000')
             $('.cpf-mask').mask('000.000.000-00')
         })
+
+        function resetAttempts(userId) {
+            if (!confirm('Tem certeza que desejar resetar as tentativas deste usuário?')) return
+
+            fetch(`/admin/users/${userId}/reset-attempts`, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Tentativas resetadas com sucesso!');
+                    location.reload();
+                } else {
+                    alert('Erro ao resetar tentativas.');
+                }
+            });
+        }
     </script>
 @endpush

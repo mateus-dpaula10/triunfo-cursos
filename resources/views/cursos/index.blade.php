@@ -65,19 +65,20 @@
                                     <a href="{{ asset('storage/' . $course->pdf_path) }}" target="_blank">Baixar PDF</a>
                                 </td>
 
-                                <td>              
-                                    @if ($course->exam)                      
-                                        <a href="{{ route('exams.show', $course->exam->id) }}" class="btn btn-sm btn-primary">Realizar Prova</a>                                    
+                                <td>       
+                                    @php 
+                                        $exam = $course->exam;
+                                        $attempt = $exam?->attempts->first();
+                                    @endphp       
+                                    @if ($exam && (!$attempt || $attempt->score < 5)) 
+                                        <a href="{{ route('exams.show', $exam->id) }}" class="btn btn-sm btn-primary">Realizar Prova</a>                                    
                                     @else
                                         <span class="text-muted">Prova não disponível</span>
                                     @endif
                                 </td>
 
                                 <td>
-                                    @if ($course->exam && $course->exam->attempts->isNotEmpty())
-                                        @php 
-                                            $attempt = $course->exam->attempts->first();
-                                        @endphp
+                                    @if ($exam && $attempt)
                                         Nota: {{ number_format($attempt->score ?? 0, 2, ',', '.') }}
                                     @else
                                         <span class="text-muted">Não tentou</span>
