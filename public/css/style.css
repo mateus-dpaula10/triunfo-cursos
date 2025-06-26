@@ -44,4 +44,12 @@
   width: 100%;
   border-left: 1px solid rgba(0, 0, 0, 0.25);
   padding: 0;
+}
+
+.table-responsive {
+  padding-bottom: 1rem;
+}
+
+.table thead tr th:not(:first-of-type):not(:last-of-type) {
+  min-width: 10rem;
 }/*# sourceMappingURL=style.css.map */

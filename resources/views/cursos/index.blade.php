@@ -69,8 +69,10 @@
                                     @php 
                                         $exam = $course->exam;
                                         $attempt = $exam?->attempts->first();
+                                        $userIsAdmin = auth()->user()->role === 'admin';
+                                        $canAttempt = !$attempt || $attempt->score < 5;
                                     @endphp       
-                                    @if ($exam && (!$attempt || $attempt->score < 5)) 
+                                    @if ($exam && $canAttempt && !$userIsAdmin)
                                         <a href="{{ route('exams.show', $exam->id) }}" class="btn btn-sm btn-primary">Realizar Prova</a>                                    
                                     @else
                                         <span class="text-muted">Prova não disponível</span>
