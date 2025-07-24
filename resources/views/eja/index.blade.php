@@ -71,24 +71,24 @@
 	<link defer type="text/css" rel="stylesheet" href="assets-eja/css/animation.css?t=<?= $time ?>">
 
 	<!-- Google tag (gtag.js) :: Adicionado em: 2025.05.05 :: 11h55 -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17055627234"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-748509881"></script>
 	<script>
 	  window.dataLayer = window.dataLayer || [];
 	  function gtag(){dataLayer.push(arguments);}
 	  gtag('js', new Date());
 
-	  gtag('config', 'AW-17055627234');
+	  gtag('config', 'AW-748509881');
 	</script>
 
 	<script>
 	function gtag_report_conversion(url) {
 	  var callback = function () {
 		if (typeof(url) != 'undefined') {
-		  window.location = url;
+			window.open(url, '_blank');
 		}
 	  };
 	  gtag('event', 'conversion', {
-		  'send_to': 'AW-17055627234/PaAgCMqxpMIaEOLv4MQ_',
+		  'send_to': 'AW-748509881/YXcgCOuKrLMZELm19eQC',
 		  'value': 1.0,
 		  'currency': 'BRL',
 		  'event_callback': callback
@@ -124,7 +124,7 @@
 						<div class="col-12 col-md-3">
 							<div class="d-none d-lg-none d-xl-block">
 								<div class="d-grid">
-									<a href="{{ route('redirect.whatsapp') }}" target="_blank" class="btn btn-primary" onclick="return gtag_report_conversion('{{ route('redirect.whatsapp') }}');">Quero Começar</a>
+									<a href="{{ route('redirect.whatsapp') }}" class="btn btn-primary" onclick="return gtag_report_conversion(this.href);">Quero Começar</a>
 								</div>
 							</div>
 						</div>
@@ -145,7 +145,7 @@
 							<div class="row justify-content-center align-items-center">
 								<div class="col-11 col-md-12">
 									<div class="d-grid">
-										<a href="{{ route('redirect.whatsapp') }}" target="_blank" class="btn btn-primary" onclick="return gtag_report_conversion('{{ route('redirect.whatsapp') }}');">Quero Começar</a>
+										<a href="{{ route('redirect.whatsapp') }}" class="btn btn-primary" onclick="return gtag_report_conversion(this.href);">Quero Começar</a>
 									</div>
 								</div>
 							</div>
@@ -215,7 +215,7 @@
 					<div class="row justify-content-center align-items-center pt-3 pb-3">
 						<div class="col-11 col-md-6 text-center">
 							<div class="d-grid">
-								<a href="{{ route('redirect.whatsapp') }}" target="_blank" class="btn btn-primary" onclick="return gtag_report_conversion('{{ route('redirect.whatsapp') }}');">Quero Concluir os Estudos</a>
+								<a href="{{ route('redirect.whatsapp') }}" class="btn btn-primary" onclick="return gtag_report_conversion(this.href);">Quero Concluir os Estudos</a>
 							</div>
 						</div>
 					</div>
@@ -233,7 +233,7 @@
 
 								<div class="d-none d-lg-none d-xl-block">
 									<div class="d-grid pt-3">
-										<a href="{{ route('redirect.whatsapp') }}" target="_blank" class="btn btn-primary" onclick="return gtag_report_conversion('{{ route('redirect.whatsapp') }}');">Quero Concluir os Estudos</a>
+										<a href="{{ route('redirect.whatsapp') }}" class="btn btn-primary" onclick="return gtag_report_conversion(this.href);">Quero Concluir os Estudos</a>
 									</div>
 								</div>
 
@@ -386,7 +386,7 @@
 					<div class="row justify-content-center align-items-center">
 						<div class="col-12 col-md-10 text-center">
 							<div class="pt-3 pb-3">
-								<a href="{{ route('redirect.whatsapp') }}" target="_blank" class="btn btn-primary" onclick="return gtag_report_conversion('{{ route('redirect.whatsapp') }}');">5511916069198</a>
+								<a href="{{ route('redirect.whatsapp') }}" class="btn btn-primary" onclick="return gtag_report_conversion(this.href);">5511916069198</a>
 							</div>
 						</div>
 					</div>
@@ -408,7 +408,7 @@
 	</div>
 
 	<div class="button-whats" style="position: fixed; right: 25px; bottom: 30px; cursor: pointer; z-index: 98;">
-		<a href="{{ route('redirect.whatsapp') }}" target="_blank" onclick="return gtag_report_conversion('{{ route('redirect.whatsapp') }}');"><img src="assets-eja/images/buttonwpp.png" alt="Botão Whatsapp" style="width: 48px;" width="48px" height="48px"></a>
+		<a href="{{ route('redirect.whatsapp') }}" onclick="return gtag_report_conversion(this.href);"><img src="assets-eja/images/buttonwpp.png" alt="Botão Whatsapp" style="width: 48px;" width="48px" height="48px"></a>
 	</div>
 
 	<script defer type="text/javascript" src="assets-eja/js/app_plugins.js?t=<?= $time ?>"></script>

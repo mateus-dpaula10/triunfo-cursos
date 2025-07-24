@@ -77,30 +77,30 @@
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
 	<!-- Google tag (gtag.js) :: Adicionado em: 2025.05.05 :: 11h55 -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17055627234"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-748509881"></script>
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
 
-	  gtag('config', 'AW-17055627234');
+		gtag('config', 'AW-748509881');
 	</script>
 
 	<script>
-	function gtag_report_conversion(url) {
-	  var callback = function () {
-		if (typeof(url) != 'undefined') {
-		  window.location = url;
+		function gtag_report_conversion(sendTo, url) {
+		var callback = function () {
+			if (typeof(url) != 'undefined') {
+				window.open(url, '_blank');
+			}
+		};
+		gtag('event', 'conversion', {
+			'send_to': sendTo,
+			'value': 1.0,
+			'currency': 'BRL',
+			'event_callback': callback
+		});
+		return false;
 		}
-	  };
-	  gtag('event', 'conversion', {
-		  'send_to': 'AW-17055627234/PaAgCMqxpMIaEOLv4MQ_',
-		  'value': 1.0,
-		  'currency': 'BRL',
-		  'event_callback': callback
-	  });
-	  return false;
-	}
 	</script>	
 
 	<style>
@@ -287,7 +287,7 @@
 								<div class="m-desc o-hero_desc ">
 									<h2 class="o_title_h2"><span style="color:#1FED77">Avance na sua vida</span> concluindo o ensino médio, de forma rápida e no conforto de sua casa!</h2>
 									<div class="pt-4">
-										<a href="{{ route('redirect.whatsapp') }}" target="_blank" class="btn btn-primary" onclick="return gtag_report_conversion('{{ route('redirect.whatsapp') }}');">FALE CONOSCO AGORA</a>
+										<a href="{{ route('redirect.whatsapp') }}" class="btn btn-primary" onclick="return gtag_report_conversion('AW-748509881/hOmhCJX4h9QaELm19eQC', this.href);">FALE CONOSCO AGORA</a>
 										<!-- <a href="https://wa.me/5511916069198?text=Olá,%20vim%20através%20do%20site%20e%20gostaria%20de%20maiores%20informações%20sobre%20o%20supletivo." aria-label="FALE CONOSCO" target="_blank" class="btn btn-primary btn-ligacao float_btn_wp">FALE CONOSCO AGORA</a> -->
 									</div>
 								</div>
@@ -307,7 +307,7 @@
 									</div>
 
 									<div class="pt-3">
-										<a href="{{ route('redirect.whatsapp') }}" target="_blank" class="btn btn-primary btn-ligacao float_btn_wp" onclick="return gtag_report_conversion('{{ route('redirect.whatsapp') }}');">SAIBA MAIS</a>
+										<a href="{{ route('redirect.whatsapp') }}" class="btn btn-primary btn-ligacao float_btn_wp" onclick="return gtag_report_conversion('AW-748509881/hOmhCJX4h9QaELm19eQC', this.href);">SAIBA MAIS</a>
 										<!-- <a href="https://wa.me/5511916069198?text=Olá,%20vim%20através%20do%20site%20e%20gostaria%20de%20maiores%20informações%20sobre%20o%20supletivo." aria-label="FALE CONOSCO" target="_blank" class="btn btn-primary btn-ligacao float_btn_wp">SAIBA MAIS</a> -->
 									</div>
 								</div>
@@ -515,7 +515,7 @@
 					<div class="row justify-content-center">
 						<div class="col-12">
 							<div class="pt-4 text-center">
-								<a href="{{ route('redirect.whatsapp') }}" target="_blank" class="btn btn-primary btn-ligacao float_btn_wp" onclick="return gtag_report_conversion('{{ route('redirect.whatsapp') }}');">FALE CONOSCO AGORA</a>
+								<a href="{{ route('redirect.whatsapp') }}" class="btn btn-primary btn-ligacao float_btn_wp" onclick="return gtag_report_conversion('AW-748509881/hOmhCJX4h9QaELm19eQC', this.href);">FALE CONOSCO AGORA</a>
 								<!-- <a href="https://wa.me/5511916069198?text=Olá,%20vim%20através%20do%20site%20e%20gostaria%20de%20maiores%20informações%20sobre%20o%20supletivo." aria-label="FALE CONOSCO" target="_blank" class="btn btn-primary btn-ligacao float_btn_wp">FALE CONOSCO AGORA</a> -->
 							</div>
 						</div>
@@ -612,7 +612,7 @@
 							<div class="row justify-content-center mb-3 d-none">
 								<div class="col-12">
 									<div class="pt-4 text-center">
-										<a href="https://wa.me/5511916069198?text=Olá,%20vim%20através%20do%20site%20e%20gostaria%20de%20maiores%20informações%20sobre%20o%20supletivo." aria-label="FALE CONOSCO" target="_blank" class="btn btn-primary btn-ligacao float_btn_wp">FALE CONOSCO AGORA</a>
+										<a href="https://wa.me/5511916069198?text=Olá,%20vim%20através%20do%20site%20e%20gostaria%20de%20maiores%20informações%20sobre%20o%20supletivo." aria-label="FALE CONOSCO" class="btn btn-primary btn-ligacao float_btn_wp">FALE CONOSCO AGORA</a>
 									</div>
 								</div>
 							</div>
@@ -842,7 +842,7 @@
 					<div class="row justify-content-center mb-3">
 						<div class="col-12">
 							<div class="pt-4 text-center">
-								<a href="{{ route('redirect.whatsapp') }}" target="_blank" class="btn btn-primary btn-ligacao float_btn_wp" onclick="return gtag_report_conversion('{{ route('redirect.whatsapp') }}');">FALE CONOSCO AGORA</a>
+								<a href="{{ route('redirect.whatsapp') }}" class="btn btn-primary btn-ligacao float_btn_wp" onclick="return gtag_report_conversion('AW-748509881/hOmhCJX4h9QaELm19eQC', this.href);">FALE CONOSCO AGORA</a>
 								<!-- <a href="https://wa.me/5511916069198?text=Olá,%20vim%20através%20do%20site%20e%20gostaria%20de%20maiores%20informações%20sobre%20o%20supletivo." aria-label="FALE CONOSCO" target="_blank" class="btn btn-primary btn-ligacao float_btn_wp">FALE CONOSCO AGORA</a> -->
 							</div>
 						</div>
@@ -951,7 +951,7 @@
 					<div class="row justify-content-center mb-3">
 						<div class="col-12">
 							<div class="pt-4 text-center">
-								<a href="{{ route('redirect.whatsapp') }}" target="_blank" class="btn btn-primary btn-ligacao float_btn_wp" onclick="return gtag_report_conversion('{{ route('redirect.whatsapp') }}');">FALE CONOSCO AGORA</a>
+								<a href="{{ route('redirect.whatsapp') }}" class="btn btn-primary btn-ligacao float_btn_wp" onclick="return gtag_report_conversion('AW-748509881/hOmhCJX4h9QaELm19eQC', this.href);">FALE CONOSCO AGORA</a>
 								<!-- <a href="https://wa.me/5511916069198?text=Olá,%20vim%20através%20do%20site%20e%20gostaria%20de%20maiores%20informações%20sobre%20o%20supletivo." aria-label="FALE CONOSCO" target="_blank" class="btn btn-primary btn-ligacao float_btn_wp">FALE CONOSCO AGORA</a> -->
 							</div>
 						</div>
@@ -976,7 +976,7 @@
 	<!-- </a> -->
 
 	<div class="button-whats" style="position: fixed; right: 25px; bottom: 30px; cursor: pointer; z-index: 98;">
-		<a href="{{ route('redirect.whatsapp') }}" target="_blank" onclick="return gtag_report_conversion('{{ route('redirect.whatsapp') }}');"><img src="assets/images/buttonwpp.png" alt="Botão Whatsapp" style="width: 48px;" width="48px" height="48px"></a>
+		<a href="{{ route('redirect.whatsapp') }}" onclick="return gtag_report_conversion('AW-748509881/YXcgCOuKrLMZELm19eQC', this.href);"><img src="assets/images/buttonwpp.png" alt="Botão Whatsapp" style="width: 48px;" width="48px" height="48px"></a>
 	</div>
 
 	<div class="modal modal-lg" id="lightbox">
