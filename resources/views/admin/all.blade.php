@@ -9,6 +9,15 @@
         </p>
     @endif
 
+    <form method="GET" action="{{ route('admin.users.all') }}" class="mb-4 d-flex">
+        <input type="text" 
+            name="search" 
+            value="{{ $search ?? '' }}" 
+            class="form-control me-2" 
+            placeholder="Buscar usuário por CPF">
+        <button type="submit" class="btn btn-secondary">Buscar</button>
+    </form>
+
     <form method="POST" action="{{ route('admin.users.patch') }}">
         @csrf
         @method('PATCH')

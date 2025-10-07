@@ -64,11 +64,22 @@ class AuthController extends Controller
         return redirect()->route('admin.users.create')->with('success', 'Usuário criado com sucesso!');
     }
 
-    public function getAll() {
+    public function getAll(Request $request) {  
+        $search = $request->input('search');
+
         $users = User::with([
             'course',
             'examAttempts.exam'
-        ])->get();
+        ])
+        ->when($search, function ($query, $search) {
+            $searchNormalized = preg_replace('/[^0-9]/', '', $search);
+
+            $query->where(function ($q) use ($search, $searchNormalized) {
+                $q->where('cpf', 'like', "%{$searchNormalized}%")
+                    ->orWhere('cpf', 'like', "%{$search}%");
+            });
+        })
+        ->get();
 
         $courses = Course::all();
 

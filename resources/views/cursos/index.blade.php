@@ -30,9 +30,10 @@
                     <tr>
                         <th>#</th>
                         <th>Nome</th>
+                        <th class="d-table-cell d-md-none">Prova</th>
                         <th>Descrição</th>
                         <th>Pdf</th>
-                        <th>Prova</th>
+                        <th class="d-none d-md-table-cell">Prova</th>
                         <th>Resultado</th>
                         @if(auth()->user()->role === 'admin')
                             <th>Excluir?</th>
@@ -43,6 +44,13 @@
                     @foreach ($courses as $index => $course)
                         @if(auth()->user()->role === 'user' && auth()->user()->course_id == $course->id || auth()->user()->role === 'admin')
                             <tr>
+                                @php 
+                                    $exam = $course->exam;
+                                    $attempt = $exam?->attempts->first();
+                                    $userIsAdmin = auth()->user()->role === 'admin';
+                                    $canAttempt = !$attempt || $attempt->score < 5;
+                                @endphp  
+
                                 <td>{{ $index + 1 }}</td>
 
                                 <td>
@@ -50,6 +58,14 @@
                                         <input type="text" name="courses[{{ $course->id }}][title]" value="{{ $course->title }}" class="form-control">
                                     @else
                                         {{ $course->title }}
+                                    @endif
+                                </td>
+
+                                <td class="d-table-cell d-md-none">
+                                    @if ($exam && $canAttempt && !$userIsAdmin)
+                                        <a href="{{ route('exams.show', $exam->id) }}" class="btn btn-sm w-100 btn-primary">Realizar</a>
+                                    @else
+                                        <span class="text-muted">Prova não disponível</span>
                                     @endif
                                 </td>
 
@@ -65,15 +81,9 @@
                                     <a href="{{ asset('storage/' . $course->pdf_path) }}" target="_blank">Baixar PDF</a>
                                 </td>
 
-                                <td>       
-                                    @php 
-                                        $exam = $course->exam;
-                                        $attempt = $exam?->attempts->first();
-                                        $userIsAdmin = auth()->user()->role === 'admin';
-                                        $canAttempt = !$attempt || $attempt->score < 5;
-                                    @endphp       
+                                <td class="d-none d-md-table-cell">    
                                     @if ($exam && $canAttempt && !$userIsAdmin)
-                                        <a href="{{ route('exams.show', $exam->id) }}" class="btn btn-sm btn-primary">Realizar Prova</a>                                    
+                                        <a href="{{ route('exams.show', $exam->id) }}" class="btn btn-sm w-100 btn-primary">Realizar Prova</a>                                    
                                     @else
                                         <span class="text-muted">Prova não disponível</span>
                                     @endif

@@ -47,15 +47,19 @@
             const container = document.getElementById('questions-container')
             
             const questionHtml = `
-                <div class="border p-3 mb-3">
-                    <div class="mb-2">
-                        <label>Pergunta ${questionIndex + 1}</label>
-                        <input type="text" name="questions[${questionIndex}][text]" class="form-control" required>
+                <div class="border p-3 mb-3 question-item" id="question-${questionIndex}">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <label class="mb-0">Pergunta ${questionIndex + 1}</label>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="removeQuestion(${questionIndex})">
+                            Remover
+                        </button>
                     </div>
+
+                    <input type="text" name="questions[${questionIndex}][text]" class="form-control mb-3" required>
 
                     <label>Alternativas</label>
                     ${[0,1,2,3].map(j => `
-                        <div class="form-check">
+                        <div class="form-check mb-2">
                             <input class="form-check-input" type="radio" name="questions[${questionIndex}][correct]" value="${j}" required>
                             <input type="text" name="questions[${questionIndex}][options][${j}]" class="form-control d-inline w-75" placeholder="Alternativa ${String.fromCharCode(65 + j)}" required>
                         </div>
@@ -65,6 +69,11 @@
 
             container.insertAdjacentHTML('beforeend', questionHtml)
             questionIndex++
+        }
+
+        function removeQuestion(index) {
+            const el = document.getElementById(`question-${index}`)
+            if (el) el.remove()
         }
     
         document.addEventListener('DOMContentLoaded', () => {
