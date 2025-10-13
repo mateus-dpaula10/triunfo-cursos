@@ -71,8 +71,8 @@
 	
 	<script src="assets/plugins/jQuery-Mask-Plugin/dist/jquery.mask.min.js" type="text/javascript"></script>
 
-	<link type="text/css" rel="stylesheet" href="assets/css/style.css?t=<?= $time ?>">
-	<link type="text/css" rel="stylesheet" href="assets/css/responsive.css?t=<?= $time ?>">
+	<link type="text/css" rel="stylesheet" href="{{ asset('assets/css/style.css') }}?t={{ $time }}">
+	<link type="text/css" rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}?t={{ $time }}">
 
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
@@ -227,6 +227,33 @@
 			align-items: center;
 			border-radius: 50%;
 		}
+
+		.o_title_right_h2{
+			color: #ffffff !important;
+			font-size: 24px !important;
+			margin: 0px 0 10px;
+			line-height: 1.1;
+			font-weight: 700;
+		}
+
+		.list_title{ padding: 0; margin: 0; list-style: none; }
+		.list_title li{ 
+			font-size: 20px !important;
+			color: #ffffff !important;
+			line-height: 1.1;
+			font-weight: 700;
+			margin-bottom: 6px;
+		}
+
+		.prazos{
+			margin-top: 2px;
+			font-size: .8rem;
+			font-weight: 600;
+			color: #ffffff;
+			background-color: #0359b3;
+			padding: 3px 16px;
+			border-radius: 1rem;	
+		}
 	</style>
 	
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
@@ -274,7 +301,7 @@
 							</div>
 						</div>
 
-						<div class="row justify-content-start">
+						<div class="row justify-content-center justify-content-md-start">
 							<div class="col-8 col-md-5 text-center align-self-center">
 								<div class="is_desktop">
 									<div class="pb-0 pb-md-4" style="display:table; margin: 0 auto;">
@@ -286,8 +313,8 @@
 								</div>
 								<div class="m-desc o-hero_desc ">
 									<h2 class="o_title_h2"><span style="color:#1FED77">Avance na sua vida</span> concluindo o ensino médio, de forma rápida e no conforto de sua casa!</h2>
-									<div class="pt-4">
-										<a href="{{ route('redirect.whatsapp') }}" class="btn btn-primary" onclick="return gtag_report_conversion('AW-748509881/hOmhCJX4h9QaELm19eQC', this.href);">FALE CONOSCO AGORA</a>
+									<div class="pt-4 pb-3">
+										<a href="{{ route('redirect.whatsapp') }}" class="btn btn-primary btn-ligacao" onclick="return gtag_report_conversion('AW-748509881/hOmhCJX4h9QaELm19eQC', this.href);">FALE CONOSCO AGORA</a>
 										<!-- <a href="https://wa.me/5511916069198?text=Olá,%20vim%20através%20do%20site%20e%20gostaria%20de%20maiores%20informações%20sobre%20o%20supletivo." aria-label="FALE CONOSCO" target="_blank" class="btn btn-primary btn-ligacao float_btn_wp">FALE CONOSCO AGORA</a> -->
 									</div>
 								</div>
@@ -295,55 +322,28 @@
 							<div class="col-4 col-md-3 text-center align-self-end">
 								<img src="assets/images/foto-matricula-transparente.png" class="img-fluid" />
 							</div>
-							<div class="col-12 col-md-4 text-center ">
+							<div class="col-11 col-md-4 text-center">
+								<div class="box-text-cnt-form" style="position: relative; padding: 42px 24px; width: 100%; margin: 30px auto; background-color: #ef6011;">
+									<div class="box-contact-infos" style="margin-bottom: 20px;">
+										<h5 class="m-0" style="color: #FFFFFF !important; line-height: 1.1;">Temos também os seguintes</h5>
+										<h5 style="color: #FFFFFF !important; line-height: 1.1; font-weight: 700;">Cursos técnicos por competência:</h5>
 
-
-								<div class="pb-4 pt-3" style="position: relative;">
-
-									<div class="box-video-header" style="height: 100%;">
-										<video id="videoInicial" controls style="width:85%; display: block;" autoplay>
-											<source src="assets/videos/saiba-mais-otimizado.mp4" type="video/mp4">
-										</video>
-									</div>
-
-									<div class="pt-3">
-										<a href="{{ route('redirect.whatsapp') }}" class="btn btn-primary btn-ligacao float_btn_wp" onclick="return gtag_report_conversion('AW-748509881/hOmhCJX4h9QaELm19eQC', this.href);">SAIBA MAIS</a>
-										<!-- <a href="https://wa.me/5511916069198?text=Olá,%20vim%20através%20do%20site%20e%20gostaria%20de%20maiores%20informações%20sobre%20o%20supletivo." aria-label="FALE CONOSCO" target="_blank" class="btn btn-primary btn-ligacao float_btn_wp">SAIBA MAIS</a> -->
-									</div>
-								</div>
-
-
-
-								<div class="box-text-cnt-form" style="position: relative; padding: 30px; width: 100%; margin: 30px auto; display:none !important;">
-									<div class="box-loading" v-bind:class="{active: loading.active}">
-										<div class="icon-loading">
-											<div class="spinner-3"></div>
+										<div class="pt-3 pb-5">
+											<h2 class="pb-2" style="font-weight: bold; line-height: 1.1; font-size: 1.2rem; color: #FFFFFF !important;">
+												Técnico em transações imobiliárias (creci)<br>
+												<span class="prazos">Prazo até 20 dias.</span>
+											</h2>
+											<h2 style="font-weight: bold; line-height: 1.1; font-size: 1.2rem; color: #FFFFFF !important;">
+												Técnico segurança do trabalho<br>
+												<span class="prazos">Prazo até 30 dias.</span>
+											</h2>
 										</div>
-									</div>
 
-									<div class="box-overlay" v-bind:class="{active: overlay.active}">
-										<div class="text-content">
-											<div class="box-msg-result" v-html="messageResult">Informações enviadas com sucesso!</div>	
-										</div>
-									</div>
-
-									<div class="box-contact-infos" style="margin-bottom: 35px;">
-										<h5>Ainda temos algumas vagas disponíveis...</h5>
-										<h2 style="font-weight: bold; line-height: 1;">Faça sua <br>pré-matrícula</h2>
-										<h5>Um consultor educacional entrará em contato em breve para finalizar sua inscrição ou tirar suas dúvidas!</h5>
-									</div>
-
-									<!-- <transition name="fade"> -->
-									<!-- <div v-if="messageResult.length"> -->
-									<!-- 	<div class="row"> -->
-									<!-- 		<div class="col-12"> -->
-									<!-- 			<div class="box-msg-result" v-html="messageResult">Informações enviadas com sucesso!</div>	 -->
-									<!-- 		</div> -->
-									<!-- 	</div> -->
-									<!-- </div> -->
-									<!-- </transition> -->
+										<div class="d-grid">
+											<a href="{{ route('redirect.whatsapp') }}" class="btn btn-primary btn-ligacao float_btn_wp" onclick="return gtag_report_conversion('AW-748509881/hOmhCJX4h9QaELm19eQC', this.href);" style="font-size: 1rem; font-weight: 600; border-radius: 3rem; padding: 1rem; text-transform: none;">Para informações entre em contato pelo WhatsApp.</a>
+										</div>										
+									</div>								
 								</div>
-
 							</div>
 						</div>
 					</div>
