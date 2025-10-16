@@ -96,6 +96,8 @@
                             <input type="hidden" name="users[{{ $user->id }}][id]" value="{{ $user->id }}">
                         </tr>
                     @endforeach
+
+                    {{ $users->links() }}
                 </tbody>
             </table>
 

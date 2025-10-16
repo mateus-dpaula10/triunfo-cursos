@@ -21,7 +21,17 @@ class AuthController extends Controller
             'password' => ['required']
         ]);
 
-        if (Auth::attempt($credentials)) {
+        $cpf = preg_replace('/\D/', '', $credentials['cpf']);
+
+        $user = User::whereRaw('REPLACE(REPLACE(REPLACE(cpf, ".", ""), "-", ""), " ", "") = ?', [$cpf])->first();
+
+        if (!$user) {
+            throw ValidationException::withMessages([
+                'cpf' => ['CPF não encontrado.'],
+            ]);
+        }
+
+        if (Auth::attempt(['cpf' => $user->cpf, 'password' => $credentials['password']])) {
             $request->session()->regenerate();
             return redirect()->intended('/cursos');
         }
@@ -79,7 +89,7 @@ class AuthController extends Controller
                     ->orWhere('cpf', 'like', "%{$search}%");
             });
         })
-        ->get();
+        ->paginate(20);
 
         $courses = Course::all();
 
